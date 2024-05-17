@@ -1,145 +1,121 @@
 body {
-  background-color:#FF0080;
-  font-family: 'Poppins','sans-serif';
+  font-family: 'Indie Flower', sans-serif;
+  background-color: #6DC5D1;
+  color: #42250c;
+  margin: 0;
+  padding: 0;
 }
 
+h1 {
+  font-family: 'Comic Sans MS', cursive;
+  font-size: 24px; 
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #42250c;
+}
+
+p,label {
+  font-family: 'Comic Sans MS', cursive;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 1.5;
+  color: #42250c;
+}
+
+/* label{
+  font-family: 'Comic Sans MS', cursive;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 1.5;
+} */
+
 .container {
-  width: 70%;
-  min-width: 50%;
+  width: 80%;
   margin: auto;
-  display: flex;
-  flex-direction: column;
 }
 
 .kanban-heading {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  font-family: sans-serif;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .kanban-board {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
-  font-family: sans-serif;
-  gap: 10px;
 }
 
-.kanban-heading-text {
-  font-family: 'Indie Flower';
-  font-style: italic;
-  font-size: 2.8rem;
-  padding: 0.8rem 1.7rem;
-  border-radius: 0.5rem;
-  margin: 1rem;
-  text-align: center;
-}
-
-.kanban-block,
-.create-new-task-block {
-  padding: 0.6rem;
-  width: 30.5%;
-  min-width: 14rem;
-  min-height: 4.5rem;
-  border-radius: 0.3rem;
-
-}
-
-#todo {
-  background-color: #FF5580;
-}
-
-#inprogress {
-  background-color: #FF5580;
-}
-
-#done {
-  background-color: #FF5580;
-}
-
-.task {
-  font-family: 'Indie Flower';
-  background-color: #FFAA80;
-  margin: 0.2rem 0rem 0.3rem 0rem;
-  border: 2px solid #FF0080;
-  border-radius: 0.2rem;
-  padding: 0.5rem 0.2rem 0.5rem 2rem;
-}
-
-#task-button {
-  margin: 0.2rem 0rem 0.1rem 0rem;
-  background-color: #a8da6e;
-  border-radius: 0.2rem;
-  width: 100%;
-  border: 0.2rem solid black;
-  padding: 0.5rem 2.7rem;
-  border-radius: 0.3rem;
-  font-size: 1rem;
+.kanban-block {
+  background-color: #FDE49E;
+  color: #000;
+  padding: 20px;
+  border: 2px solid #FEB941;
+  border-radius: 5px;
+  width: 30%;
 }
 
 .create-new-task-block {
   display: none;
-  background: #FFAA80;
-  width: 64.4%;
-  flex-direction: column;
+  background-color: #FDE49E;
+  color: #000;
+  padding: 20px;
+  border: 2px solid #FEB941;
+  border-radius: 5px;
+  width: 30%;
 }
 
 .form-row {
-  display: flex;
-  flex-direction: row;
-  margin: 0.2rem;
+  margin-bottom: 15px;
 }
 
-.form-row-label {
-  width: auto;
-  padding: 0.2rem;
-  padding-right: 0.5rem;
-  border: 0.1rem solid black;
-  border-right: 0;
-  border-radius: 0.2rem 0rem 0rem 0.2rem;
+label {
+  display: block;
+  font-weight: bold;
 }
 
-.form-row-input {
-  border: 0.1rem solid black;
-  border-radius: 0rem 0.2rem 0.2rem 0rem;
-  width: 85%;
+input[type="text"],
+textarea,
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #DD761C;
+  border-radius: 5px;
+  box-sizing: border-box;
+  margin-top: 5px;
 }
 
-textarea {
-  resize: none;
+button {
+  padding: 12px 24px;
+  border: none;
+  background-color: #FEB941;
+  color: #42250c;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'Comic Sans MS', cursive;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 1.5;
 }
 
-.form-row-buttons {
-  display: flex;
-  flex-direction: row;
-  gap: 5px;
-}
-.form-row-buttons button:hover{
-  background-color: aqua;
+button:hover {
+  background-color: #DD761C;
+  color:#ffff
 }
 
-#edit-button,
-#save-button,
-#cancel-button {
-  margin: 0.2rem 0rem 0.1rem 0rem;
-  background-color: #FFFF80;
-  border-radius: 0.2rem;
-  width: 49.2%;
-  border: 0.25rem solid black;
-  padding: 0.5rem 2.7rem;
-  border-radius: 0.3rem;
-  font-size: 1rem;
+.task {
+  background-color: #DD761C;
+  border: 2px solid #FEB941;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 20px;
 }
 
-#edit-button {
-  display: none;
+.task.dragging {
+  background-color: #FEB941;
 }
 
-@media only screen and (max-width: 600px) {
-
-  .kanban-board{
-      flex-direction: column;
-      gap: 10px;
-  }
+.task span,
+.task p {
+  color: #42250c;
+  font-size: 18px; 
 }

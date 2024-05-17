@@ -8,50 +8,41 @@ function allowDrop(ev) {
 
 function drop(ev) {
     ev.preventDefault();
-    var data = ev.dataTransfer.getData("text");
-    ev.currentTarget.appendChild(document.getElementById(data));
+    const data = ev.dataTransfer.getData("text");
+    const droppedElement = document.getElementById(data);
+    if (droppedElement) {
+        ev.currentTarget.appendChild(droppedElement);
+    }
 }
 
-function createTask(){
-    var x = document.getElementById("inprogress");
-    var y = document.getElementById("done");
-    var z = document.getElementById("create-new-task-block");
-    if (x.style.display === "none") {
-        x.style.display = "block";
-        y.style.display = "block";
-        z.style.display = "none";
+function toggleTaskForm() {
+    const newTaskBlock = document.getElementById("create-new-task-block");
+    if (newTaskBlock.style.display === "none" || newTaskBlock.style.display === "") {
+        newTaskBlock.style.display = "block";
     } else {
-        x.style.display = "none";
-        y.style.display = "none";
-        z.style.display = "flex";
+        newTaskBlock.style.display = "none";
     }
 }
 
 function saveTask() {
-    var taskName = document.getElementById("task-name").value;
-    var taskDescription = document.getElementById("task-description").value;
-    var taskStatus = document.getElementById("task-status").value;
+    const taskName = document.getElementById("task-name").value.trim();
+    const taskDescription = document.getElementById("task-description").value.trim();
+    const taskStatus = document.getElementById("task-status").value;
 
-    var targetColumn = document.getElementById(taskStatus);
-    targetColumn.innerHTML += `
-    <div class="task" id="${taskName.toLowerCase().split(" ").join("")}" draggable="true" ondragstart="drag(event)">
-        <span>${taskName}</span>
-        <p>${taskDescription}</p>
-    </div>
-    `;
-}
+    if (!taskName || !taskDescription) {
+        alert("Please fill in both Task and Description fields.");
+        return;
+    }
 
-
-function editTask(){
-    var saveButton = document.getElementById("save-button");
-    var editButton = document.getElementById("edit-button");
-    if (saveButton.style.display === "none") {
-        saveButton.style.display = "block";
-        editButton.style.display = "none";
-    } else{
-        saveButton.style.display = "none";
-        editButton.style.display = "block";
+    const targetColumn = document.getElementById(taskStatus);
+    if (targetColumn) {
+        const taskId = taskName.toLowerCase().replace(/\s+/g, '-');
+        targetColumn.innerHTML += `
+            <div class="task" id="${taskId}" draggable="true" ondragstart="drag(event)">
+                <span>${taskName}</span>
+                <p>${taskDescription}</p>
+            </div>
+        `;
+        toggleTaskForm(); // Hide the task creation form after saving
     }
 }
-
-
